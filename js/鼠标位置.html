@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+        }
+        input{
+            float: left;
+            width: 16%;
+            line-height: 30px;
+        }
+        #one ul li{
+            line-height: 280px;
+            width: 50%;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body id="body">
+        <input type="text" id="sx">
+        <input type="text" id="sy"> 
+        <input type="text" id="qx">
+        <input type="text" id="qy">
+        <input type="text" id="cx">
+        <input type="text" id="cy">
+    <div id="one"><ul>
+        <li></li>
+        <li></li>
+        
+        
+    </ul></div>
+    
+    <script>
+        var sx = document.getElementById('sx');
+        var sy = document.getElementById('sy');
+        var qx = document.getElementById('qx');
+        var qy = document.getElementById('qy');
+        var cx = document.getElementById('cx');
+        var cy = document.getElementById('cy');
+        function show(event){
+            // 表示指针在整个显示器的位置
+            sx.value = event.screenX;
+            sy.value = event.screenY;
+            // 表示在整个页面中的位置
+            qx.value = event.pageX;
+            qy.value = event.pageY;
+            // 表示在浏览器可视区域的位置
+            cx.value = event.clientX;
+            cy.value = event.clientY;
+        }
+        var el = document.getElementById('body');
+        el.addEventListener('mousemove',show,false);
+    </script>
+</body>
+</html>

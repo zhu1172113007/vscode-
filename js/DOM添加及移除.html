@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <div id="fa">
+        <div id="del">我是需要删除的盒子</div>
+        <div>这个盒子不删除</div>
+    </div>
+    <div id="shuxing" style="font-size: 20px" class="one">dom查询</div>
+    <script>
+        // 1 创建元素
+        // createElement()
+        // 使用createElement方法创建一个新的元素节点
+        var div = document.createElement('div');
+        // 2 设置内容 
+        // createTextNode()
+        // 使用createTextNode方法会创建一个新的文本节点
+        var divtext = document.createTextNode('我是一个盒子')
+        // 3 把他添加到dom树中   
+        // appendChild()
+        // 拥有元素之后可以使用appendChild()方法把它添加到DOM树中
+        // 先把内容添加到元素中
+        div.appendChild(divtext);
+        // 使用getElementsByTagName方法获取一个元素  注意获取的是不是单个元素
+        var position = document.getElementsByTagName('ul');
+        // console.log(position);
+        position[0].appendChild(div);
+        // 4 insertBefore()方法后边补充
+
+
+        // 2 移除元素 
+        // 1 把要被移除的元素保留在一个变量中
+        var del = document.getElementById('del');
+        // 2 把要移除元素的父元素保存在变量中
+        var delfa = document.getElementById('fa');
+        // 把第二部得到的包含元素上使用removeChild()方法：这个方法指向不需要的那个元素
+        delfa.removeChild(del);
+
+        document.write();
+        // 这个方法可以很简单的向页面的源代码中添加内容，不过不推荐使用
+        // 优点;可以快速的让初学者理解如何向页面中添加内容
+        // 缺点;     1 只在页面初始化加载时有效；2 如果在页面上加载完后使用 则会碰到
+        // 2.1 整个页面被覆盖 2.2 不是向页面中添加  2.3 创建一个新的页面
+        // 3 在严格验证xhtml中可能会遇到问题 4 程序员通常不太喜欢用
+
+        // 属性节点
+
+            // |   DOM查询            |  |   方法       |
+            // document.getElementById().getAttribute();
+            // 方法：
+                // 1   getAttribute()       获取属性值
+                // 2   hasAttribute()       检查元素节点是否包含特性属性
+                // 3   setAttribute()       设置属性值
+                // 4   removeAttribute()    从元素节点移除属性
+            // 属性：
+                // classname   获取或设置属性的class属性的值     
+                // id          获取或设置属性的id属性的值   
+
+            // setAttribute()是两个值组成比如 class属性 setAttribute('class','classname')
+        var shuxing = document.getElementById('shuxing');
+        // 获取元素
+        // console.log(shuxing);
+        
+        var shuxing1 = shuxing.getAttribute('style');
+        // 获取元素的style属性
+        // console.log(shuxing1);
+        shuxing.textContent = shuxing1 + shuxing.textContent;
+        shuxing.removeAttribute('class');
+        shuxing.setAttribute('name','name');
+        console.log(shuxing.hasAttribute('id'));//返回的是个布尔值
+        
+
+    </script>
+</body>
+
+</html>

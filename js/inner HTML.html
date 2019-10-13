@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            column-count: auto;
+            flex-direction: column;
+        }
+
+        ul li {
+            line-height: 500%;
+            color: rgb(300, 0, 90);
+            border: 2px solid #000;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <a href=""></a>
+    <ul>
+        <li id="one"><em>斜体</em>正常字体</li>
+        <li>我是第二li</li>
+        <li>我是第三li</li>
+        <li>我是第四li</li>
+    </ul>
+    <script>
+        // 获取
+        var one = document.getElementById('one');
+        console.log(one);
+        
+        // 把获取的内容用一个变量保存
+        var two = one.innerHTML;
+        console.log(two);
+        // 更新内容加原先的内容  这里增增加了一个A标签  链接指向五个div熟悉弹性布局
+        one.innerHTML = '<a href=\"https://www.cnblogs.com/jerehedu/p/7358329.html\">' + two + '</a>'
+    </script>
+</body>
+
+</html>

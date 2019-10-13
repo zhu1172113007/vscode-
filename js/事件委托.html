@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>这是一个把li的事件注册给ul的例子，叫做事件委托，因为有一个东西就叫做事件流</h2>
+
+    <div>
+        <ul id="ulList">
+            <li><a href="#">10</a></li>
+            <li><a href="#">11</a></li>
+            <li><a href="#">12</a></li>
+            <li><a href="#">13</a></li>
+            <li><a href="#">13</a></li>
+            <li><a href="#">13</a></li>
+            <li><a href="#">13</a></li>
+            <li><a href="#">13</a></li>
+
+            <li>14</li>
+            <li>15</li>
+        </ul>
+        <!-- 井号在这里是没有地址 只是用来代替 并没有触发a标签的默认行为（跳转到新页面） -->
+        <a href="#">点我</a>&nbsp;&nbsp;
+        <a href="https://www.baidu.com">跳转到百度页面</a>
+    </div>
+    <script>
+
+       /** preventDefault()  有一些事件比如点击链接或提表单，会把用户导向另外一个页面。为了阻止这类元素的这种默认行为
+        可以使用事件对象的preventDefault()方法，IE5 - 8有一个同样功能的属性returnValue 如果将其设置成false，就
+        可以达到同样的效果。可以使用判断语句来检查支持哪个方法。**/
+
+        /** stopPropagation()  处理完某个元素上的事件之后，可能需要阻止这个事件向其祖先元素继续冒泡传播。为了阻止事件冒泡，
+        可以使用这个方法，IE8或者更早的版本中，使用拥有同样功能属性的cancelBubble,将其设置为true可以达到同样的效果，同样的
+        使用if语句来检查支持那个方法**/
+        // 这个函数用来获取用户点击的元素
+        function getTarget(e) {
+            // 如果不存在那么e就是window.event
+            if (!e) {
+                e = window.event;
+                console.log(e);
+                // log不出来这个e 
+            }
+            // 返回一个元素对象 如果不支持target 那就返回早起的事件对象获取事件目标
+            // target目标
+            // 下边这句话的意思就是返回元素兑现目标也就是获取的元素
+            return e.target || e.srcElement;
+            // console.log(e.target);还是log不出来      
+        }
+        // 此时的 getTarget(e)还是defined
+        // 三·创建itemDone方法 
+        function itemDone(e) {
+            // 三·1·创建变量用来接收点击的元素
+            var t, fa;
+            t = getTarget(e);//三·2·获取点击的元素 调用getTarget函数
+            fa = t.parentNode;//三·3·获取点击元素的父元素
+            // zu = t.parentNode.parentNode;   如果li里边还有别的子元素的话这句话得添加上不然会
+            // 直接移除整个ul
+            fa.removeChild(t);//三·4·从父元素移除子元素
+            // 四·判断浏览器是否支持parentDefault()方法  改变a标签的默认行为
+            // parentDefault()方法  为了阻止点击li标签里边的a标签的默认行为
+            // a标签的默认行为是跳转到一个新页面
+            if (e.parentDefault) {
+                e.parentDefault();
+            } else {
+                e.returnValue = false;
+            }
+        }
+        // 一·事件监听器会被添加到ul元素 所以首先获取ul这个元素
+        var ul = document.getElementById('ulList');
+        // 二·判断浏览器是否支持addEventListener()方法
+        if (ul.addEventListener) {
+            // 支持就使用这个方法注册事件
+            // 注册的事件是点击  调用itemDone()函数这个方法   事件流是冒泡方式（从最底层元素开始往外跳）
+            ul.addEventListener('click', function (e) { itemDone(e) }, false)
+        } else {
+            ul.attachEvent('click', function (e) { itemDone(e) })
+        }
+    </script>
+</body>
+
+</html>，

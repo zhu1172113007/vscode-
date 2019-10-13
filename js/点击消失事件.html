@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var mag = '<div class=\"header\"><a id=\"close\" href=\"#\">close x</a></div>';
+        mag += '<div><h2>系统维护<h2></h2>';
+        mag += '比比的不知道啥';
+        mag += '还是一堆不知道啥东西';
+        var elNode = document.createElement('div');
+        elNode.setAttribute('id','note');
+        elNode.innerHTML = mag;
+        document.body.appendChild(elNode);
+        function dismissNote(){
+            document.body.removeChild(elNode);
+        }
+        var elClose = document.getElementById('close');
+        elClose.addEventListener('click',dismissNote,false);
+    </script>
+</body>
+</html>

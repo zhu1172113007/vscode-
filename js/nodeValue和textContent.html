@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两种获取元素内容的方法</title>
+</head>
+<body>
+    <div id="node">nodeValue</div>
+    <div id="text">textContent</div>
+    <script>
+        var node = document.getElementById('node');
+        var text = document.getElementById('text');
+        // 获取到节点本身是包含文本元素的节点  
+        // 需要做的就是获取文本节点，然后再访问nodevalue的值
+        // 这里直接获取节点的第一个子节点就可以了
+        var node1 = node.firstChild.nodeValue;
+        node.firstChild.nodeValue = node1 + '第一种方法';
+        var text1 = text.textContent;
+        text.textContent = text1 + '第二种方法';
+        alert(node1);
+
+        alert(text1)
+    </script>
+</body>
+</html>

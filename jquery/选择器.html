@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a.test {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://jquery.com/">jquery</a>
+    <script src="js/jquery.js.js"></script>
+    <script>
+
+        // Your code goes here.
+        //你的代码在这里
+        window.onload = function () {
+            alert("welcome");
+        };
+        // $(document).ready(function () {
+            // alert('这是一个新的网页');
+            // $('a').click(function (event) {
+                // alert('这个a标签不会再跳转到新的页面不会访问')
+                // event.preventDefault()
+            // })
+        // });
+        // $("a").addClass("test");
+        $("a").click(function (event) {
+            event.preventDefault();
+            $(this).hide("slow")
+        });
+        $.get("myhtmlpage.html", function () {
+            myCallBack(param1, param2);
+        });
+    </script>
+</body>
+
+</html>

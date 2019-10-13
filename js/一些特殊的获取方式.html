@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>one</li>
+        <li id="one"><i>two</i>two</li>
+        <li id="two">three<i>three</i>three</li>
+    </ul><br>
+    <div id="color" style="width: 100px; height: 100px; background-color: red; color: seashell; font-size: 22px">
+        我是文字
+    </div>
+    <div id="colors" style="width: 100px; height: 100px; font-size: 22px; border: 1px solid">
+        wo shi wen zi
+    </div>
+    <script>
+        var ul = document.getElementsByTagName('ul');
+        // console.log(ul);
+        var li = ul[0].nextSibling.nodeValue;
+        // console.log(li);为啥是没东西
+
+                // 获取id为one的元素得到li这个元素，在获取到第一个子元素i标签,
+                // nextSibling再获取到i标签的下一个兄弟节点，也就是文字节点 就可以用nodevalue访问内容
+        console.log(document.getElementById('one').firstChild.nextSibling.nodeValue);
+        var color = document.getElementById('color');
+        color.style.backgroundColor = '#000';
+        color.firstChild.nodeValue = '我是第二段文字';
+        var colors = document.getElementById('colors');
+        var text = colors.firstChild.nodeValue;
+        text = text.replace('wen zi','第三段文字');
+        console.log(text);
+        // 这里已经替换过了 
+        colors.firstChild.nodeValue = text;
+
+        // textContent和innerText获取和更新文本
+        // textContent：
+        // 1, 是一个同时忽略元素内的所有标签只返回文字内容的标签，
+        // 2, 同样可以用来更新元素的内容
+        // 3, 它会替换掉整个内容(包括其中所有标签)
+        // 4, 在IE8或者更早的版本中这个属性不起作用
+
+        // innerText不推荐使用
+        // 1, 支持情况: Firefox不支持 这个标签不属于任何标准
+        // 2, 遵从css 不会返回被css隐藏的内容
+        // 3, 性能: 获取文本比textContent更慢
+        var text = document.getElementById('two');
+        console.log(text.textContent);
+        var add = text.textContent + '时间是于一切';
+        console.log(add);
+        text.textContent = add;
+        console.log(text.textContent);
+        
+        // 添加或移除HTML内容
+        // 有两种方法 第一种使用innerHTML 第二种是DOM操作方法
+        // innerHTML更新内容及标签
+        
+    </script>
+</body>
+
+</html>

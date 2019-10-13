@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="shoppingList">
+        <li class="complete"><a href="#">one</a></li>
+        <li class="complete"><a href="#">two</a></li>
+        <li class="complete"><a href="#">three</a></li>
+        <li class="complete"><a href="#">four</a></li>
+    </ul>
+    <!-- <a href="#"></a> -->
+    <script>
+        // 创建函数 用于判断这个对象是否存在
+        function getTarget(e) {
+            // 如果不存在那么e就是window.event
+            if (!e) {
+                e = window.event;
+            }
+            
+            return e.target || e.srcElement;
+        }
+        function itemDone(e) {
+            var target, elParent, elGrandparent;
+            target = getTarget(e);
+            elParent = target.parentNode;
+            elGrandparent = target.parentNode.parentNode;
+            elGrandparent.removeChild(elParent);
+            if (e.parentDefault) {
+                e.parentDefault();
+            } else {
+                e.returnValue = false;
+            }
+        }
+        var el = document.getElementById('shoppingList');
+        if (el.addEventListener) {
+            el.addEventListener('click', function (e) { itemDone(e) }, false)
+        } else {
+            el.attachEvent('click', function (e) { itemDone(e) });
+        }
+    </script>
+</body>
+
+</html>

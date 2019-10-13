@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one"></div>
+    <script>
+        var div = document.getElementById('one');
+        
+        function c(e) {
+            // 声明一个变量用来接收e的值
+            var el;
+            // 判断e这个对象是否存在
+            if (!e) {
+                // 不存在就返回window的 对象
+                // 一· window.event代表着事件对象的状态。只有在事件发生时生效。如鼠标、
+                // 键盘等事件被触发时这个对象才存在。window.event这只在IE下是这样的。他并不是标准。也就是
+                // 说其他浏览器并不支持。在W3C标准支持的浏览器下事件对向是引发事件涵数的第一个参数，参数名随意。
+                // 二、javascript函数（方法）d()参数为e||window.event  表示e或window.event  这句话是跨浏览器的写法
+                // 支持这两种方式的 浏览器才能进入该方法，IE中该对象为window.event(window可省略)  而Firefox中该对象为e ，
+                // 至于该对象是什么：该对象代表事件的状态，例如触发event对象的元素、鼠标的位置及状态、按下的键等等 。
+                // 例如：获取光标位置 event.clientX event.clientYe = window.event;
+            }
+            // 变量存放对象 在比较新的版本中得到的是e.event  在IE5 -IE8中 得到的是e.srcElement\
+            // 用的是短路值得方式 或者
+            el = e.event || e.srcElement;
+            el.style.background = 'black';
+            console.log(e);
+            // 返回的是mouseevent
+            console.log(el);
+            // 返回的是div这个对象
+        }
+        if(div.addEventListener){
+            div.addEventListener('click',c,false);
+        }else{
+            div.attchEvent('onclick',c);
+        }
+    </script>
+</body>
+
+</html>

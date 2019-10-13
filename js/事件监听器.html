@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="one" style="width: 100px;height: 100px;background: red;"></div>
+    <div id="num" style="width: 100px;height: 100px; border: 10px solid black"></div>
+
+    <script>
+        // 获取背景颜色的div
+        var div = document.getElementById('one');
+        // 获取算法的div
+        var num = document.getElementById('num');
+        // 改变背景颜色的函数
+        function bian() {
+            div.style.background = 'black';
+        }
+        // 这里函数名后边的小括号得去掉不然会直接执行 
+        // 原因是注册事件后边的函数名加括号直接就是调用的意思
+        // 通常函数后边的小括号是传参的作用 这里要去掉括号 
+
+        // 计算算法的函数
+        function suan(a) {
+            var i = a * 10;
+            num.innerHTML = i + ' + ' + typeof (i);
+            // console.log(i);
+        }
+
+
+        // console.log(suan(5));
+
+        // 因此需要把调用方法封装在一个函数中
+        // 给div添加事件
+        // div.onclick = bian;
+        // 给第二个div添加事件
+        // num.onclick = suan;
+
+        // addEventListener是事件监听的意思 也带绑定事件的意思（不需要在单独写一个onclick了）
+        // 监听的事件，调用的函数，事件流
+        div.addEventListener('click', bian, false);
+        // 监听的事件，匿名函数封装，事件流
+        // 匿名函数的作用是将调用的函数封装起来，因为事件调用函数不能加括号 
+        // 这里的作用是封装调用的函数的传参
+        // 事件流：假设移动或点击鼠标到一个链接上，同样会把鼠标移动或点击到他的父元素上
+        // 事件流就是事件发生的顺序有两种流向
+        // 1 事件冒泡：事件从具体的节点开始向外翻转到最宽泛的节点（爬dom树的最顶端）
+        // 2 捕获事件：事件从最宽泛的节点开始向内传播到最具体的节点（从dom树顶端下来）这种方式在ie8或者之前版本不支持
+        // 当代码在一个元素和其祖先元素或后代元素上都有事件处理程序的时候，事件流变的非常重要
+
+        // num.addEventListener('click', function () { suan(5) }, false);
+        // 在ie5-8中不支持addEventListener这个方法 酒凹就要用到if判断
+        // if判断中用到两个相同功能的监听器
+        // 一个addEventListener，一个attchEvent
+        // 拿nun为例子
+        if (num.addEventListener) {
+            num.addEventListener('click', function () { suan(5) }, false);
+        } else {
+            num.attachEvent('click', function () { suan(5) });
+        }
+        // 在ie5——ie8中  不同的方法名称也不同
+        // 属性                 ie                 目标
+        // target              srcElement        事件的目标（交互最具体的元素）
+        // type                type              发生的事件类型
+        // cancelable          不支持            是否可以撤销在这个元素上的默认行为
+        // preventDefault()    returnValue       撤销这个事件上的默认行为(如果可以撤销的话)      
+        // stopPropagation()   cancelBubble      停止事件继续冒泡或捕获的过程
+    </script>
+</body>
+
+</html>

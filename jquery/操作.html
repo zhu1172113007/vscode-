@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="one">这是第一句话</div>
+    <div id="div">这是第二句话</div>
+    <div style="width: 100%; text-align: center;">这是第三句话</div>
+    <div id="one"><div id="two"><div>这是第四句话</div></div></div>
+    <div class="two">这是第五句话</div>
+    <div id="twoOne">这是第五句话</div>
+    <div>这是第六句话</div>
+    <div>这是第七句话</div>
+    
+    
+    <script src="js/jquery.js.js"></script>
+    <script>
+        // class选择器
+        var divClass = $('.one');
+        // id选择器
+        var div = $('#div');
+        // 属性选择器
+        var divStyle = $('div[style="width: 100%; text-align: center;"]');
+        // 层级选择器（一层一层往下）
+        var divSi = $("#one #two div");
+        // 使用逗号的选择器（多选）
+        var divComposite = $('.two,#twoOne');
+        // 伪类选择器 pseudo-classes 
+        // 在表单中选择所有类似输入的元素
+        var pseudoClassesOne = $('input')
+        // 更改元素的内容 可以识别html标签
+
+
+
+        divClass.html('class选择器更改的内容');
+        divStyle.html('属性选择器更改的内容');
+        divSi.html('复合选择器更改的内容给');
+        divComposite.html('使用逗号的选择器（多选）');
+        div.html('这是<strong>更改元素内容的</strong>实验');
+
+
+        console.log(div); //打印出的是个伪数组
+        
+    </script>
+</body>
+
+</html>

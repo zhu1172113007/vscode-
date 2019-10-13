@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #div {
+            width: 250px;
+            height: 250px;
+            background-color: greenyellow;
+            display: none;
+            /* //默认不显示 */
+        }
+
+        .show {
+            width: 250px;
+            height: 250px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="显示" id="btn">
+    <div id="div"></div>
+
+    <br />
+    <input type="button" value="显示" id="btn2">
+    <div id="div2"></div>
+
+
+    <script type="text/javascript">
+        function my$(id) {
+            return document.getElementById(id);
+        }
+        //封装通过元素id名，获取元素的方法
+
+        my$("btn").οnclick = function () {
+            if (this.value == "显示") {
+                my$("div").style.display = "block";
+                this.value = "隐藏";
+                // 默认不显示，改变其状态
+            } else {
+                my$("div").style.display = "none";
+                this.value = "显示";
+                // 通过点击后成显示状态，改为不显示状态
+            }
+        }
+
+    </script>
+
+
+    <script type="text/javascript">
+        function my$(id) {
+            return document.getElementById(id);
+        }
+        //封装通过元素id名，获取元素的方法
+
+        my$("btn2").onclick = function () {
+            if (my$("div2").className != "show") {
+                my$("div2").className = "show";
+                this.value = "显示";
+                // 一开始默认的是没有class类名，所以没有效果视觉效果是隐藏，其实是没有样式
+                // 通过响应点击事件，将元素
+            } else {
+                my$("div2").className = "hidden";
+                this.value = "隐藏";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

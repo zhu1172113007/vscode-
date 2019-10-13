@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>键盘事件 可以测试键盘</title>
+    <style>
+        div {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            /* 强制换行 */
+            word-break: break-all;
+            font-size: 32px;
+            line-height: 40px;
+            /* 字间距 */
+            letter-spacing: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        // document对象的键盘按下事件
+        document.onkeydown = function (ev) {
+            var ev = ev || event;
+            var div = document.getElementById('div');
+            // key是键值的意思
+            div.innerHTML += ev.keyCode + ',';
+        }
+        // div.addEventListener('keydown',key,false);
+    </script>
+</body>
+
+</html>

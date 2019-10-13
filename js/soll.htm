@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://blog.csdn.net/zbx931197485/article/details/7946867">获取焦点</a><br>
+    <a href="https://blog.csdn.net/mp624183768/article/details/82056424">tabindex</a>
+    <div id="myBtn1">
+
+           <input type="text" value="按钮" tabindex="3"><br>
+           <input type="text" value="按钮" tabindex="2"><br>
+            <div id="btn2" tabindex="1">按钮</div>
+
+            一个整数属性，指示元素是否可以接受输入焦点(是可聚焦的)，是否应该参与顺序键盘导航，如果是，在什么位置。
+            它可以有几个值:负值表示元素应该是可聚焦的，但不应该通过顺序键盘导航访问;e表示元素应该是可聚焦的，
+            并且可以通过顺序的键盘导航访问，但是它的相对顺序是由平台约定定义的;正值表示元素应该是可聚焦的，
+            并且可以通过顺序键盘导航访问;元素集中的顺序是tabindex的递增值，如果多个元素共享同一个tabindex，
+            则它们的相对顺序与它们在
+    </div>
+    <script>
+        // EventUtil.addHandler(window, 'scroll', function () {
+        //     if (document.compatMode == 'CSS1Compat') {
+        //         alert(document.documentElement.scrollTop);
+        //     } else {
+        //         alert(document.body.scrollTop);
+        //     }
+        // })
+
+
+        //EventUtil
+        var EventUtil = {
+
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) {        //DOM2级
+                    element.addEventListener(type, handler, false);
+
+                } else if (element.attachEvent) {      //DOM1级
+                    element.attachEvent("on" + type, handler);
+
+                } else {
+                    element["on" + type] = handler;    //DOM0级
+                }
+            },
+
+            removeHandler: function (element, type, handler) {   //类似addHandler
+
+                if (element.removeEventListener) {
+                    element.removeEventListener(type, handler, false);
+
+                } else if (element.detachEvent) {
+                    element.detachEvent("on" + type, handler);
+
+                } else {
+                    element["on" + type] = null;
+
+                }
+            }
+
+        }
+        var btn1 = document.getElementById("myBtn1");
+        var btn2 = document.getElementById('btn2')
+        var handler = function () {
+            alert("hello handler");
+        }
+        
+        EventUtil.addHandler(btn1, "click", handler);
+        EventUtil.addHandler(btn2, 'click', handler);
+//         addHandler 方法，职责是分别视情况而定来使用DOM0级方法、DOM2级方法或IE方法来添加事件。
+
+// 　　   这个方法属于一个名字叫EventUtil的对象，可以使用这个对象来处理浏览器间的差异。　　　　              
+
+//          addHandler() 方法接受3个参数：要操作的元素、事件名称和事件处理程序函数。
+
+//          与addHandler()方法对应的方法是removeHandler()，它也接受相同参数。这个方法的指责是移除之前添加的事件处理程序
+//          -------无论该事件处理程序是采取什么方式添加到元素中的。如果其他方法无效，默认采用DOM0级方法。
+    </script>
+</body>
+
+</html>

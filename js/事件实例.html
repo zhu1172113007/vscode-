@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            text-align: bottom;
+            font-size: 24px;
+            width: 500px;
+            height: 100px;
+            border-bottom: 1px solid skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入">
+    <input type="submit">
+    <script>
+        // 1 获取需要使用事件的节点
+        var in1 = document.getElementsByTagName('input')[0];
+        // 事件名称及运行代码
+        function detection() {
+            if (in1.value.length < 5) {
+                alert('输入错误');
+                in1.value = '';
+            } else {
+                alert('输入正确'); 
+            }
+        } 
+        // 绑定事件到节点上  这里用到的是一个监听事件addEventListener
+        // 判断浏览器是否支持这个方法，如果支持那么就执行这个代码
+        // 如果不支持会返回一个false  执行else代码
+        if(in1.addEventListener){
+            in1.addEventListener('blur',detection,false);
+        }else{
+            in1.attachEvent('blur',detection) 
+        }
+        
+    </script>
+</body>
+
+</html>

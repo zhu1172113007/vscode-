@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fa">
+        <button id="one">one</button>
+        <button>two</button>
+        <button>three</button>
+        <button>for</button>
+        <button>five</button>
+        <button>six</button>
+        <input type="text" id="input" value="请点击左侧按钮进行选择">
+    </div>
+    <script>
+        // var button = document.getElementById('one');
+
+        // var text = button.innerHTML;
+        // alert(text);
+        function getTarget(e){
+            if(!e){
+                e = window.event;
+            }
+            return e.target || e.srcElement;
+        }
+        
+        function click(e){
+            // var el, elFa, text;
+            var el, text;
+            
+            el = getTarget(e);
+            // elFa = el.parentNode;
+            text = el.innerHTML;
+            var input = document.getElementById('input');
+            // var va = input.nodeValue;
+            alert(text);
+            input.value = text;
+        }
+        var button = document.getElementById('fa');
+        if(button.addEventListener){
+            button.addEventListener('click',function(e){click(e)},false)
+        }else{
+            button.attachEvent('click',function(e){click(e)})
+        }
+    </script>
+</body>
+</html>

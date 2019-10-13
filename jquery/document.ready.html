@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{
+            font-size: 28px !important;
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+    <div>jquery优点 <ul>
+        <li>代码简洁</li>
+        <li>容错率高</li>
+        <li>可以写多个入口（ready方法）</li>
+        <li>兼容问题</li>
+        <li>api便于记忆</li>
+        <li></li>
+    </ul></div>
+    <pre>在文档“就绪”之前，无法安全地操纵页面。jQuery为您检测到这种就绪状态。
+        $( document ).ready()仅在页面文档对象模型（DOM）准备好执行JavaScript代码之后，内部代码才会运行。
+        $( window ).on( "load", function() { ... })一旦整个页面（图像或iframe）
+        （不仅是DOM）准备就绪，其中包含的代码都将运行。</pre>
+    <script src="js/jquery.js.js"></script>
+    <script>
+        // 函数入口 作用等于window.onload   h5代码执行完才执行js代码  
+        $(document).ready(function () {
+            alert("ready!");
+        });
+        $(document).ready(function () { 
+            alert('ready');
+         })
+    </script>
+</body>
+
+</html>

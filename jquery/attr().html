@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a id="c">这</a>
+
+    <script src="js/jquery.js.js"></script>
+    <script>
+        //  $("a").attr("href", "https://learn.jquery.com/using-jquery-core/attributes/");
+
+        $("a").attr({
+            title: "jquery学习!",
+
+            href: "https://learn.jquery.com/using-jquery-core/attributes/"
+        });
+        //$( "a" ).attr( "href" );  返回文档中第一个元素的href
+        alert($("a").attr("href"));
+        // Creating a new element with an attribute object.
+        // $("<div/>", {
+        //     html: "This is a <strong>new</strong> link",
+        //     "class": "new",
+        //     // style: "foo.html"
+        // });
+        $("<div class=\"new\">new list item</div>");
+        var myNewElement = $("<p>New element</p>");
+
+        myNewElement.appendTo("#c");
+
+        myNewElement.insertAfter("ul:last"); // This will remove the p from #content!
+
+        $("ul").last().after(myNewElement.clone());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cool {
+            /* display: inline; */
+            text-align: center;
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 1 在列表的开始和结尾处各添加一个新项
+        // 两个方法是不同的
+        var ul = document.createElement('ul');
+        console.log(ul);
+
+        var fa = document.getElementsByTagName('body')[0];
+        var ulc = document.createTextNode('这是一个ul');
+        ul.appendChild(ulc);
+        fa.appendChild(ul);
+        // 创建第一个li元素   它会成为这个ul的最后一个li
+        var lastli = document.createElement('li');
+        var lastLiText = document.createTextNode('这是最后一个li元素');
+        lastli.appendChild(lastLiText);
+        ul.appendChild(lastli);
+        // 成功添加最后一个li
+        // 创建开始处对的li
+        var firstli = document.createElement('li');
+        var firstLiText = document.createTextNode('这是最开始的li元素');
+        firstli.appendChild(firstLiText);
+        // 这里需要用到一个新的方法 parent.insertBefore(newitem新的条目 ,  target目标)
+        // parent 父元素 .  insertBefore是一个方法 在父元素中放置什么东西 放置在哪
+        // 它需要获取一些额外的信息，需要把内容添加到那个元素之前
+        ul.insertBefore(firstli, ul.firstChild);
+        // 给中间添加点li
+        var centerli = document.createElement('li');
+        var centerLiText = document.createTextNode('我是中间li元素');
+        centerli.appendChild(centerLiText);
+        console.log(centerli);
+        centerli.setAttribute('id', 'one');
+        ul.insertBefore(centerli, ul.lastChild);
+
+        // 添加多个这样的中间li需要用到克隆
+        var li = document.getElementById('one');
+        var arr = new Array(5);
+        console.log(arr.length);
+        
+        var i;
+        var newel;
+        // var lis = li.cloneNode();
+        // for (i = 0; i < arr.length; i++) {
+        //         li.removeAttribute('id', 'one')
+        //         arr.push(li);
+        //         console.log(i);
+        //         newel = 
+        //         // ul.appendChild(arr[i]);
+        //         console.log(arr[i]);  
+        // }
+        console.log(i);
+        
+        console.log(arr);
+                    // insertafter（）
+                    // 需要用到
+                    // parentNode()
+                    // lastChild()
+                    // appengChild()
+                    // insertBefore()
+                    // nextSibling()
+
+                    // ul.appendChild(arr[j]);
+
+        // ul.insertBefore(newel, ul.lastChild);
+        // ul.insertBefore(lis, ul.lastChild)
+        // ul.insertBefore(firstli, ul.lastChild);
+        // var centerLiText = document.createTextNode('我是中间li元素');
+        // centerli.appendChild(centerLiText);
+        // ul.insertBefore(firstli,ul.lastChild);
+        // 2 给所有项设置class属性
+        // 到循环遍历每一个元素然后把他们;的class属性更新为cool
+        var l = document.querySelectorAll('li');
+        var array;
+        for (var i = 0; i < l.length; i++) {
+            // l[i].onclick = function(){
+            //     l[i].className = 'cool'
+            // }
+            l[i].className = 'cool'
+        }
+        // console.log(li);
+
+        // 3 在页面标头添加列表项的数量
+
+        // 需要用到4个步骤 
+            // 1 获取页面标头
+            // 2 统计页面中元素的数量
+            // 3 把列表项的数量添加到页面标头的内容中
+            // 4 使用新的内容更新页面标头
+    </script>
+
+</body>
+
+</html>

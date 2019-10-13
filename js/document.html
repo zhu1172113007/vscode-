@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button id="btn3">按钮3</button>
+    <button id="btn4">按钮4</button>
+    <button id="btn5">按钮5</button>
+    <button id="btn6">按钮6</button>
+    <button id="btn7">按钮7</button>
+    <button id="btn8">按钮8</button>
+    <button id="btn9">按钮9</button><br>
+    <div class="queryselector">1</div>
+    <div class="queryselector">22</div>
+    <!-- <div class="queryselector">2</div>
+    <div class="queryselector">3</div>
+    <div class="queryselector">4</div> -->
+    <div id="shu"></div>
+    <br>
+    <ul>
+        <li class="li1">点击上边的按钮显示当前的时间</li>
+        <li class="li2">点击按钮更换一句话</li>
+        <li id="inner">w <i>斜体文字</i> omen</li>
+    </ul>
+    <script>
+        // 首先获取按钮
+        // BYID返回的是单个元素
+        // 还有两种方法是返回单个元素
+        // 1.querySelector('')
+        // 2.遍历dom树
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn3');
+        var btn4 = document.getElementById('btn4');
+        var btn5 = document.getElementById('btn5');
+        var btn6 = document.getElementById('btn6');
+        var btn7 = document.getElementById('btn7');
+        var btn8 = document.getElementById('btn8');
+        var btn9 = document.getElementById('btn9');
+        // console.log(btn1.parentNode);
+        var shu = document.querySelector('#shu');
+        // console.log(shu);
+
+        // parentNode,previousSibling/nextSibling,firstChild/lastChild
+        // 移动到另一个相关元素节点，当前元素的前一个/后一个，当前的元素的第一个元素节点/最后一个元素节点
+        // var btn10 = document.querySelectorAll('btn');
+        // console.log(btn10);
+        // nodeValue后边补充
+        // textConteng仅访问内容
+        // 下边这三个是创建，添加，移除节点
+        // createElement
+        // createTextNode
+        // appendChild/removeChild
+        // 以上这些不会用于选择一个节点 他们只读
+
+
+
+        // hasAttribute()检查属性是否存在
+        // getAttribute()获取属性值
+        // setAttribute()更新属性值
+        // removeAttribute()移除属性
+        var queryselector = document.querySelectorAll('.queryselector');
+        // console.log(queryselector.textContent);是个空值 什么都没有
+        console.log(queryselector[1]);
+
+        var a = shu.innerHTML;
+        queryselector[1].innerHTML = a
+
+        // btn9.onclick = function(){
+        //     shu.value = toString(queryselector.value);
+        // }
+        // 获取ul
+        // 同样的 有三种方法选取多个元素  
+        // 标签选择 getElementsByTagName()
+        // 类名选择 getElementsByClassName()
+        // 选择所有匹配的元素 querySelectorALL()
+        // 这返回的是一个伪数组。获取单独的元素需要遍历
+        var li1 = document.getElementsByClassName('li1');
+        var li2 = document.getElementsByClassName('li2');
+        // console.log(li2);
+
+
+        // 添加点击事件
+        // 这个Data是内置时间对象
+        var data = new Date();
+        var hours = data.getHours();
+        var min = data.getMinutes();
+        // console.log(hours);
+        // console.log(min);
+
+
+        btn1.onclick = function () {
+            var a = hours + ':' + min;
+            li1[0].innerHTML = a;
+            // console.log(a);
+        }
+
+
+        btn2.onclick = function () {
+            li2[0].innerHTML = '这句话已经更换好了'
+        }
+        // for (var i = 0; i > li.length; i++) {
+        //     btn[i].onclick = function () {
+        //         li[i].innerHTML = '更换好的一句话'
+        //     }
+        // }
+
+        // 使用innerHTML获取和更新文本
+        var el = document.getElementById('inner').innerHTML;
+        console.log(el);
+
+    </script>
+</body>
+
+</html>
